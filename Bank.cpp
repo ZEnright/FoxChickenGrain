@@ -15,10 +15,10 @@ using namespace std;
 // isEmpty returns true if the list has no nodes and false if it does
 bool BankList::isEmpty()
 {
-	if(!head)
-		return true;
-	else
-		return false;
+    if(!head)
+        return true;
+    else
+        return false;
 }
 
 
@@ -74,7 +74,7 @@ void BankList::appendNode(int num)
 	BankNode *newNode;  // To point to a new node
 
 	// Allocate a new node and store num there.
-	newNode = new ListNode;
+	newNode = new BankNode;
 	newNode->value = num;
 	newNode->next = NULL;
 
@@ -100,7 +100,7 @@ void BankList::insertNode(int position, int num)
 	BankNode *nodePtr;
 	BankNode *newNode;
 	
-	newNode = new ListNode;
+	newNode = new BankNode;
 	newNode->value = num;
 	
 	if(!head)
