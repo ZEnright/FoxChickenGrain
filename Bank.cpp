@@ -8,6 +8,7 @@
 ******************************************************************/
 
 #include <iostream>  
+#include <string>
 #include "Bank.h"
 using namespace std;
 
@@ -15,10 +16,10 @@ using namespace std;
 // isEmpty returns true if the list has no nodes and false if it does
 bool BankList::isEmpty()
 {
-    if(!head)
-        return true;
-    else
-        return false;
+	if(!head)
+		return true;
+	else
+		return false;
 }
 
 
@@ -147,10 +148,11 @@ void BankList::insertNode(int position, int num)
 // stored in each node of the linked list          *
 // pointed to by head.                             *
 //**************************************************
-void BankList::displayList() const
+string BankList::displayList()
 {
 	BankNode *nodePtr;  // To move through the list
-
+	
+	string result;
 	if(head != NULL)
 	{
 		// Position nodePtr at the head of the list.
@@ -159,16 +161,16 @@ void BankList::displayList() const
 		while (nodePtr)
 		{
 			// Display the value in this node.
-			switch(nodeptr->value)
+			switch(nodePtr->value)
             {
-                case: 0
-                    cout << "Fox/n";
+                case 0:
+                    result += "Fox";
                     break;
-                case: 1
-                    cout << "Chicken/n";
+                case 1:
+                    result += "Chicken";
                     break;
-                case: 2
-                    cout << "Grain/n";
+                case 2:
+                    result += "Grain";
                     break;
             }
 
@@ -177,7 +179,9 @@ void BankList::displayList() const
 		}
 	}
 	else
-		cout << "<Empty>" << endl;
+		result = "<Empty>";
+	
+	return result;
 }
 
 
@@ -231,33 +235,6 @@ void BankList::deleteNode(int num)
 }
 
 
-//searches for a value (num) and returns the position or -1 if can't be found
-int BankList::search(int num)
-{
-	BankNode *nodePtr;  // To move through the list
-	int position;
-
-	// Position nodePtr at the head of the list.
-	nodePtr = head;
-	position = 0;
-
-	// While nodePtr points to a node, traverse the list.
-	while (nodePtr)
-	{
-		//see if this node matches the value
-		if(nodePtr->value == num)
-			return position;
-		
-		//increment position
-		position++;
-
-		// Move to the next node.
-		nodePtr = nodePtr->next;
-	}
-	return -1; //node couldn't be found
-}
-
-
 //**************************************************
 // Destructor                                      *
 // This function deletes every node in the list.   *
@@ -285,11 +262,48 @@ BankList::~BankList()
 	}
 }
 
+//checks to see if the fox and chicken are alone toegther or the grain and chicken are alone together
+bool BankList::GameChecker()
+{
+	BankNode *nodePtr = head;
 
+    // Variables to leep track of characters on the banks
+    bool hasFox = false;
+    bool hasChicken = false;
+    bool hasGrain = false;
+
+    while (nodePtr != NULL)
+    {
+        switch (nodePtr->value)
+        {
+            case 0: // Fox
+                hasFox = true;
+                break;
+            case 1: // Chicken
+                hasChicken = true;
+                break;
+            case 2: // Grain
+                hasGrain = true;
+                break;
+        }
+        nodePtr = nodePtr->next;
+    }
+
+    // Check for forbidden combinations
+    if ((hasFox && hasChicken) || (hasChicken && hasGrain))
+    {
+        return true; // Forbidden combination detected
+    }
+
+    return false; // No forbidden combination found
+}
+
+
+// prints farmers location
 void FarmerLocation(int pos)
 {
 	if(pos == 0)
-		cout << "The farmer is on the south bank." << endl;
+		cout << "The farmer is on the south bank.\n" << endl;
 	else
-		cout << "The farmer is on the north bank." << endl;
+		cout << "The farmer is on the north bank.\n" << endl;
 }

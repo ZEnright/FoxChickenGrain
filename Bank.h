@@ -18,7 +18,7 @@ class BankList
 		// Declare a structure for the Bank list
 		struct BankNode
 		{
-			double value; 
+			int value; 
 			struct BankNode *next;  	// To point to the next node
 		}; 
 
@@ -39,11 +39,15 @@ class BankList
 		// Bank list operations
 		bool isEmpty();
 		int getLength();
-		int search(int);
 		int getNodeValue(int);
 		void appendNode(int);
 		void insertNode(int, int);
 		void deleteNode(int);
-        void displayList() const;
+        string displayList();
+		bool GameChecker();
 };
+
+// Function that prints the farmers location
+void FarmerLocation(int);
+
 #endif
