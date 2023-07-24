@@ -1,8 +1,8 @@
 /*****************************************************************
-	Title:  	Driver.cpp
-	Date:  		7-23-2023
-	Author: 	Zack Enright
-	Purpose:	To demonstrate a Singly-Linked List solution for
+    Title:      Driver.cpp
+    Date:       7-23-2023
+    Author:     Zack Enright
+    Purpose:    To demonstrate a Singly-Linked List solution for
     the fox chicken and grain puzzle game
 ******************************************************************/
 
@@ -44,19 +44,24 @@ int main()
         cout << "If you want the farmer to cross the river without " << endl;
         cout << "carrying anything, enter 'nothing' at the prompt." << endl;
 
-        //Display both the South and North Bank contents
-        cout << "South Bank:/n" << southBank.displayList() << endl;
-        cout << "North Bank:/n" << northBank.displayList() << endl;
+        
 
         while(!gameLost)
         {
             string input;
-            FarmerLocation(farmerPos);
-            cout << "What should the farmer take?: ";
-            cin >> input;
-            
+            if()
+            {
+                
+            }
+            else
+                //Display both the South and North Bank contents
+                cout << "South Bank:/n" << southBank.displayList() << endl;
+                cout << "North Bank:/n" << northBank.displayList() << endl;
+                FarmerLocation(farmerPos);
+                cout << "What should the farmer take?: ";
+                cin >> input;
+                cout << "The farmer takes the "<< input << " with him." << endl;
         }
-
     }
 
 
