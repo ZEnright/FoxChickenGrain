@@ -39,11 +39,11 @@ class BankList
 		// Bank list operations
 		bool isEmpty();
 		int getLength();
-		int search(double);
-		double getNodeValue(int);
-		void appendNode(double);
-		void insertNode(int, double);
-		void deleteNode(double);
-		void displayList() const;
+		int search(int);
+		int getNodeValue(int);
+		void appendNode(int);
+		void insertNode(int, int);
+		void deleteNode(int);
+        void displayList() const;
 };
 #endif
