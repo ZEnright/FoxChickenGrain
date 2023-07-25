@@ -48,6 +48,6 @@ class BankList
 };
 
 // Function that prints the farmers location
-void FarmerLocation(int);
+void FarmerLocation(int, std::ostream&);
 
 #endif

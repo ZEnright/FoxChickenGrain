@@ -9,6 +9,7 @@
 
 #include <iostream>  
 #include <string>
+#include <fstream>
 #include "Bank.h"
 using namespace std;
 
@@ -290,19 +291,27 @@ bool BankList::GameChecker(int turnCount)
     }
 
     // Check for forbidden combinations
-    if ((turnCount % 2 == 0) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
+    if ((turnCount % 2 == 1) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
         return true; // Forbidden combination detected
-	else if((turnCount % 2 == 1) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
+	else if((turnCount % 2 == 0) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
 		return true; // Forbidden combination detected
     return false; // No forbidden combination found
 }
 
 
 // prints farmers location
-void FarmerLocation(int pos)
+void FarmerLocation(int pos, std::ostream& OutputFile)
 {
 	if(pos == 0)
+	{
 		cout << "The farmer is on the south bank." << endl;
+		//sends same output to txt file
+		OutputFile << "The farmer is on the south bank." << endl;
+	}
 	else
+	{
 		cout << "The farmer is on the north bank." << endl;
+		//sends same output to txt file
+		OutputFile << "The farmer is on the north bank." << endl;
+	}
 }

@@ -1,0 +1,101 @@
+The farmer is on the south bank.
+
+South bank:
+Fox
+Chicken
+Grain
+
+
+North bank:
+<Empty>
+
+What should the farmer take?: chicken
+
+The farmer takes the chicken with him.
+
+The farmer is on the north bank.
+
+South bank:
+Fox
+Grain
+
+
+North bank:
+Chicken
+
+
+What should the farmer take?: nothing
+The farmer is on the south bank.
+
+South bank:
+Fox
+Grain
+
+
+North bank:
+Chicken
+
+
+What should the farmer take?: grain
+
+The farmer takes the grain with him.
+
+The farmer is on the north bank.
+
+South bank:
+Fox
+
+
+North bank:
+Chicken
+Grain
+
+
+What should the farmer take?: chicken
+The farmer is on the south bank.
+
+South bank:
+Fox
+Chicken
+
+
+North bank:
+Grain
+
+
+What should the farmer take?: fox
+
+The farmer takes the fox with him.
+
+The farmer is on the north bank.
+
+South bank:
+Chicken
+
+
+North bank:
+Grain
+Fox
+
+
+What should the farmer take?: nothing
+The farmer is on the south bank.
+
+South bank:
+Chicken
+
+
+North bank:
+Grain
+Fox
+
+
+What should the farmer take?: chicken
+
+The farmer takes the chicken with him.
+
+The farmer is on the north bank.
+
+Congratulations! You safely transported all the items to the north bank!
+
+Play again? (y/n):
