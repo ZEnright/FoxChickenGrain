@@ -43,8 +43,8 @@ class BankList
 		void appendNode(int);
 		void insertNode(int, int);
 		void deleteNode(int);
-        string displayList();
-		bool GameChecker();
+        std::string displayList();
+		bool GameChecker(int);
 };
 
 // Function that prints the farmers location

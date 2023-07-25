@@ -43,7 +43,7 @@ int main()
 
     string userInput;
     bool playAgain = true;
-    int turnCount = 0;
+    int turnCount = -1;
 
     //The repeatable part of the game is put into a loop
     while (playAgain)
@@ -58,40 +58,69 @@ int main()
         cout << "What should the farmer take?: ";
         getline(cin, userInput);
 
-        if (userInput == "nothing")
+        turnCount++;
+        if(turnCount % 2 == 0)
         {
-            cout << "\nThe farmer takes nothing.\n";
-        }
-        else
-        {
-            if(userInput == "fox")
+            if (userInput == "nothing")
             {
-                southBank.deleteNode(0);
-                northBank.appendNode(0);
-            }
-            else if(userInput == "chicken")
-            {
-                southBank.deleteNode(1);
-                northBank.appendNode(1);
+                cout << "\nThe farmer takes nothing.\n";
             }
             else
             {
-                southBank.deleteNode(2);
-                northBank.appendNode(2);
+                if(userInput == "fox")
+                {
+                    southBank.deleteNode(0);
+                    northBank.appendNode(0);
+                }
+                else if(userInput == "chicken")
+                {
+                    southBank.deleteNode(1);
+                    northBank.appendNode(1);
+                }
+                else
+                {
+                    southBank.deleteNode(2);
+                    northBank.appendNode(2);
+                }
+            cout << "\nThe farmer takes the " << userInput << " with him.\n\n";
             }
-            cout << "\nThe farmer takes the " << userInput << " with him.\n";
+        }
+        else
+        {
+            if (userInput == "nothing")
+            {
+                cout << "\nThe farmer takes nothing.\n\n";
+            }
+            else
+            {
+                if(userInput == "fox")
+                {
+                    northBank.deleteNode(0);
+                    southBank.appendNode(0);
+                }
+                else if(userInput == "chicken")
+                {
+                    northBank.deleteNode(1);
+                    southBank.appendNode(1);
+                }
+                else
+                {
+                    northBank.deleteNode(2);
+                    southBank.appendNode(2);
+                }
+            cout << "\nThe farmer takes the " << userInput << " with him.\n\n";
+            }
         }
 
+
         //Moves the farmer between banks
-        if(turnCount == 0)
-            FarmerLocation(1);
         if(turnCount % 2 == 0)
             FarmerLocation(1);
         else
             FarmerLocation(0);
 
         //checks if you lost by calling GameChecker()
-        if (southBank.GameChecker() || northBank.GameChecker())
+        if((turnCount % 2 == 0) && (northBank.GameChecker(turnCount)))
         {
             cout << "\n";
             if (userInput == "nothing")
@@ -119,6 +148,37 @@ int main()
             southBank.appendNode(1);
             southBank.appendNode(2);
             FarmerLocation(0);
+            turnCount = -1;
+        }
+        else if((turnCount % 2 == 1) && (southBank.GameChecker(turnCount)))
+        {
+            cout << "\n";
+            if (userInput == "nothing")
+                cout << "The fox";
+            else
+                cout << "The " << userInput;
+            
+            //prompts user that they lost and asks if they want to play again
+            cout << " ate the chicken! You lost!\n\n";   
+            cout << "Play again? (y/n): ";
+            getline(cin, userInput);
+
+            //checks if they want to play again, if not stops loop
+            if (userInput != "y")
+                playAgain = false;
+
+            //reset both banks
+            southBank.deleteNode(1);
+            southBank.deleteNode(0);
+            southBank.deleteNode(2);
+            northBank.deleteNode(1);
+            northBank.deleteNode(0);
+            northBank.deleteNode(2);
+            southBank.appendNode(0);
+            southBank.appendNode(1);
+            southBank.appendNode(2);
+            FarmerLocation(0);
+            turnCount = -1;
         }
         //checks if the north bank has all three characters in it
         else if (northBank.getLength() == 3)
@@ -143,6 +203,7 @@ int main()
             southBank.appendNode(1);
             southBank.appendNode(2);
             FarmerLocation(0);
+            turnCount = -1;
         }
     }
 

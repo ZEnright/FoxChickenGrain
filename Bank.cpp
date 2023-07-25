@@ -164,13 +164,13 @@ string BankList::displayList()
 			switch(nodePtr->value)
             {
                 case 0:
-                    result += "Fox";
+                    result += "Fox\n";
                     break;
                 case 1:
-                    result += "Chicken";
+                    result += "Chicken\n";
                     break;
                 case 2:
-                    result += "Grain";
+                    result += "Grain\n";
                     break;
             }
 
@@ -263,7 +263,7 @@ BankList::~BankList()
 }
 
 //checks to see if the fox and chicken are alone toegther or the grain and chicken are alone together
-bool BankList::GameChecker()
+bool BankList::GameChecker(int turnCount)
 {
 	BankNode *nodePtr = head;
 
@@ -290,11 +290,10 @@ bool BankList::GameChecker()
     }
 
     // Check for forbidden combinations
-    if ((hasFox && hasChicken) || (hasChicken && hasGrain))
-    {
+    if ((turnCount % 2 == 0) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
         return true; // Forbidden combination detected
-    }
-
+	else if((turnCount % 2 == 1) && ((hasFox && hasChicken) || (hasChicken && hasGrain)))
+		return true; // Forbidden combination detected
     return false; // No forbidden combination found
 }
 
@@ -303,7 +302,7 @@ bool BankList::GameChecker()
 void FarmerLocation(int pos)
 {
 	if(pos == 0)
-		cout << "The farmer is on the south bank.\n" << endl;
+		cout << "The farmer is on the south bank." << endl;
 	else
-		cout << "The farmer is on the north bank.\n" << endl;
+		cout << "The farmer is on the north bank." << endl;
 }
